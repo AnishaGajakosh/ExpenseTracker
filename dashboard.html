@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="app" class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark tiny">₹</span>
+      <span>Expense Tracker</span>
+    </div>
+
+    <div class="user-box">
+      <strong id="userName"></strong>
+      <small id="userEmail"></small>
+    </div>
+
+    <nav>
+      <button class="nav-btn active" data-section="dashboard"><span>Dashboard</span></button>
+      <button class="nav-btn" data-section="addExpense"><span>Add Expense</span></button>
+      <button class="nav-btn" data-section="expenses"><span>Expenses</span></button>
+      <button class="nav-btn" data-section="analytics"><span>Analytics</span></button>
+    </nav>
+
+    <button id="logoutBtn" class="logout-btn">↪ Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <p id="pageSubtitle">See your expense summary at a glance.</p>
+      </div>
+      <div class="date-pill" id="todayDate"></div>
+    </header>
+
+    <section id="dashboard" class="section active">
+
+      <div class="welcome">
+        <div>
+          <h2>Hello, <span id="welcomeName">User</span> 👋</h2>
+          <p>Keep track of where your money goes.</p>
+        </div>
+        <button class="primary-btn" data-section="addExpense">+ Add Expense</button>
+      </div>
+
+      <div class="summary-cards four">
+
+        <div class="summary-card blue">
+          <span class="card-icon">₹</span>
+          <div>
+            <h3>Total Expenses</h3>
+            <p id="totalExpenses">₹0</p>
+            <small>All time</small>
+          </div>
+        </div>
+
+        <div class="summary-card green">
+          <span class="card-icon">#</span>
+          <div>
+            <h3>Number of Expenses</h3>
+            <p id="expenseCount">0</p>
+            <small>All time</small>
+          </div>
+        </div>
+
+        <div class="summary-card orange">
+          <span class="card-icon">↗</span>
+          <div>
+            <h3>Highest Expense</h3>
+            <p id="highestExpense">₹0</p>
+            <small>Single expense</small>
+          </div>
+        </div>
+
+        <div class="summary-card purple">
+          <span class="card-icon">▥</span>
+          <div>
+            <h3>This Month</h3>
+            <p id="monthExpense">₹0</p>
+            <small>Total spent</small>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="card-heading">
+          <h2>Recent Expenses</h2>
+          <button class="text-btn" data-section="expenses">View All →</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="recentExpenseTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="addExpense" class="section">
+
+      <div class="form-card card">
+        <form id="expenseForm" class="expense-form">
+
+          <div class="form-grid">
+
+            <div>
+              <label for="amount">Amount</label>
+              <input type="number" id="amount" min="0.01" step="0.01" required>
+            </div>
+
+            <div>
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="">Select Category</option>
+                <option>Food</option>
+                <option>Travel</option>
+                <option>Shopping</option>
+                <option>Education</option>
+                <option>Bills</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="wide">
+              <label for="description">Description</label>
+              <input type="text" id="description" required>
+            </div>
+
+            <div>
+              <label for="date">Date</label>
+              <input type="date" id="date" required>
+            </div>
+
+          </div>
+
+          <button class="primary-btn" type="submit">Add Expense</button>
+          <p id="expenseMessage" class="message"></p>
+
+        </form>
+      </div>
+
+    </section>
+
+    <section id="expenses" class="section">
+
+      <div class="filters card">
+        <input id="searchInput" type="text" placeholder="Search description or category...">
+
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Shopping</option>
+          <option>Education</option>
+          <option>Bills</option>
+          <option>Other</option>
+        </select>
+
+        <select id="sortSelect">
+          <option value="date-desc">Newest First</option>
+          <option value="date-asc">Oldest First</option>
+          <option value="amount-desc">Highest Amount</option>
+          <option value="amount-asc">Lowest Amount</option>
+        </select>
+      </div>
+
+      <div class="card table-card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="expenseTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="analytics" class="section">
+
+      <div class="summary-cards three">
+
+        <div class="summary-card blue">
+          <h3>Total Expense</h3>
+          <p id="analyticsTotal">₹0</p>
+        </div>
+
+        <div class="summary-card green">
+          <h3>Average Expense</h3>
+          <p id="averageExpense">₹0</p>
+        </div>
+
+        <div class="summary-card orange">
+          <h3>Highest Expense</h3>
+          <p id="analyticsHighest">₹0</p>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <h2>Category-wise Expenses</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Total Amount</th>
+                <th>Number of Expenses</th>
+              </tr>
+            </thead>
+            <tbody id="categorySummary"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

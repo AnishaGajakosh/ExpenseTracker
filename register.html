@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account - Expense Tracker</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+<div class="auth-card">
+  <a href="index.html" class="back-link">← Back</a>
+  <div class="brand-mark small">₹</div>
+  <h1>Create Account</h1><p class="subtext">Create your Expense Tracker account.</p>
+  <form id="signupForm">
+    <label for="signupName">Name</label><input id="signupName" type="text" autocomplete="name" required>
+    <label for="signupEmail">Gmail</label><input id="signupEmail" type="email" autocomplete="email" required>
+    <label for="signupPassword">Password</label><input id="signupPassword" type="password" autocomplete="new-password" minlength="6" required>
+    <label for="signupConfirmPassword">Confirm Password</label><input id="signupConfirmPassword" type="password" autocomplete="new-password" minlength="6" required>
+    <button class="primary-btn full" type="submit">Create Account</button>
+    <p id="signupMessage" class="message"></p>
+  </form>
+  <p class="switch-text">Already have an account? <a href="login.html">Login</a></p>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

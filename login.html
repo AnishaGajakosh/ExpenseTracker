@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Expense Tracker</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+<div class="auth-card">
+  <a href="index.html" class="back-link">← Back</a>
+  <div class="brand-mark small">₹</div>
+  <h1>Welcome Back</h1><p class="subtext">Login to manage your expenses.</p>
+  <form id="signinForm">
+    <label for="signinEmail">Gmail</label><input id="signinEmail" type="email" autocomplete="username" required>
+    <label for="signinPassword">Password</label><input id="signinPassword" type="password" autocomplete="current-password" required>
+    <button class="primary-btn full" type="submit">Login</button>
+    <p id="signinMessage" class="message"></p>
+  </form>
+  <p class="switch-text">Don't have an account? <a href="register.html">Create Account</a></p>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
